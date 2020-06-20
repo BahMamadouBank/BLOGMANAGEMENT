@@ -40,9 +40,11 @@ class ProduitsController extends Controller
     public function create()
     {
 
-        $categories=DB::table('categories')->get();
 
-        return view('pages.produits.add')->with('categories',$categories);
+        $categories=DB::table('categories')->get();
+        $currencies=DB::table('currencies')->get();
+        return view('pages.produits.add')->with('categories',$categories)->with('currencies',$currencies);
+
     }
 
     /**
@@ -57,6 +59,7 @@ class ProduitsController extends Controller
             'designation'  => 'required',
             'prixAchat'    => 'required',
             'prixVente'    => 'required',
+            'currency_id'  => 'required',
             'categorie_id' => 'required',
             'image'     => 'required|image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
@@ -86,11 +89,16 @@ class ProduitsController extends Controller
 
         DB::table('produits')->insert([
 
+
              'designation'=>$request->designation,
+             'currency_id'=>$request->currency_id,
              'prixAchat'=>$request->prixAchat,
              'prixVente'=>$request->prixVente,
              'categorie_id' => $request->categorie_id,
-             'image'    => $fullName
+             'image'    => $fullName,
+
+            
+
         ]);
       
         return back()->with('succes','Enregistré');

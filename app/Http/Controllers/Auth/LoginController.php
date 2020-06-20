@@ -52,11 +52,11 @@ class LoginController extends Controller
 
     public function postLogin(Request $request){
 
-        $phone    = $request->phone;
+        $name   = $request->name;
         $password = $request->password;
 
         $data = [
-            'phone'=>$phone,
+            'name'=>$name,
             'password'=>$password
         ];
 
@@ -74,12 +74,14 @@ class LoginController extends Controller
     }
 
     public function postRegister(Request $request){
-
+        $name     =$request->name;
+        $email    =$request->email;
         $phone    = $request->phone;
         $password = $request->password;
 
         $user = new User();
-
+        $user->name=$name;
+        $user->email=$email;
         $user->phone = $phone;
         $user->password = Hash::make($password);
 

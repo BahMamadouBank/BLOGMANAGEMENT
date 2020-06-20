@@ -18,6 +18,10 @@ class CreateForeignKeyTable extends Migration
             $table->foreign('produit_id')->references('id')->on('produits')->onDelete('cascade');
            
         });
+        Schema::table('permission_role', function (Blueprint $table) {
+            $table->foreign('permission_id')->references('id')->on('permissions')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('role_id')->references('id')->on("roles")->onDelete('cascade')->onUpdate('cascade');
+        });
     }
 
     /**
@@ -28,6 +32,9 @@ class CreateForeignKeyTable extends Migration
     public function down()
     {
         Schema::table('Commande_Produit', function (Blueprint $table) {
+            //
+        });
+        Schema::table('permission_role', function (Blueprint $table) {
             //
         });
     }

@@ -3,15 +3,12 @@
 @section('content')
     <div class="container">
         <div class="row">
-            
-        </div>
-        <div class="row">
             <div class="col-md-12">
-                <form action="{{ url('/adds') }}" method="post">
+                <form action="{{ url('/role-adds') }}" method="post">
 
                     @csrf()
                     <div class="form-group">
-                        <label for="">Categorie</label>
+                        <label for="">Role</label>
                         <input type="text" name="name" class="form-control">
                         <span class="text-danger">{{ ($errors->has('name')) ? $errors->first('name') : '' }}</span>
                     </div>

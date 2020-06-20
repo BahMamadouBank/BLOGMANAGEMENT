@@ -7,10 +7,10 @@
                 </div>  
         @endif
 </div>
-<table class="table table-stripe table-hover">
+<table class="table table-striped">
     <legend> Ma liste d'utilisateur</legend>
     
-      <thead>
+      <thead class="thead">
         <tr>
           <th>ID</th>
           <th>Name</th>

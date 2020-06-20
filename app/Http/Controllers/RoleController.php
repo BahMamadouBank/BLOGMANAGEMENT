@@ -5,31 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use DB;
-use App\Comment;
+use App\Role;
 
-class CommentController extends Controller
+class RoleController extends Controller
 {
     
 
-      /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-         /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $comments=DB::table('comments')->get();
+        $roles=DB::table('roles')->get();
 
-        return view('pages.comment.liste')->with('comments',$comments);
+        return view('pages.roles.liste')->with('roles',$roles);
     }
 
     /**
@@ -39,9 +30,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        $articles=DB::table('articles')->get();
-
-        return view('pages.comment.add')->with('articles',$articles);
+        return view('pages.roles.add');
     }
 
     /**
@@ -53,18 +42,17 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'comment'        => 'required',
-            'article_id'      => 'required',
+            'name'        => 'required',
+            'description' => 'required',
         ]);
 
-        DB::table('comments')->insert([
+        DB::table('roles')->insert([
 
-             'comment'        =>$request->comment,
-             'article_id'      =>$request->article_id
- 
+             'name'=>$request->name,
+             'description'=>$request->description
         ]);
       
-        return back()->with('success','Enregistré');
+        return back()->with('succes','Enregistré');
 
     }
 
@@ -76,13 +64,13 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        $comment=DB::table('comments')->where('id',$id)->first();
+        $role=DB::table('roles')->where('id',$id)->first();
 
-        if(!$comment){
+        if(!$role){
             return back();
         }
 
-        return view('pages.comment.single')->with('comment',$comment);
+        return view('pages.roles.single')->with('role',$role);
     }
 
     /**
@@ -93,13 +81,13 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        $comment=DB::table('comments')->where('id',$id)->first();
+        $role=DB::table('roles')->where('id',$id)->first();
 
-        if(!$comment){
+        if(!$role){
             return back();
         }
 
-        return view('pages.comment.edit')->with('comment',$comment);
+        return view('pages.roles.edit')->with('role',$role);
     }
 
     /**
@@ -111,14 +99,15 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([  
-            'comment'   => 'required'
+        $request->validate([
+            'name'        => 'required',
+            'description' => 'required',
         ]);
 
-        DB::table('comments')->where('id',$id)->update([
+        DB::table('roles')->where('id',$id)->update([
 
-              
-             'comment' => $request->comment
+             'name'=>$request->name,
+             'description'=>$request->description
         ]);
       
         return back()->with('succes','Modifiée');
@@ -133,8 +122,9 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-       DB::table('comments')->where('id',$id)->delete();
+       DB::table('roles')->where('id',$id)->delete();
 
        return back()->with('succes','Supprimé');
     }
+
 }

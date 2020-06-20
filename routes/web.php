@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-   
+
    Route::get('/adds','CategorieController@create');
    Route::post('/adds','CategorieController@store');
 
@@ -63,6 +63,25 @@ Route::get('/', function () {
    Route::post('/register', 'Auth\LoginController@postRegister')->name('register');
 
    Route::get('/logout', 'Auth\LoginController@getLogout')->name('logout');
+
    Route::get('/create', 'UsersController@index');
    Route::post('/save', 'UsersController@store');
    Route::get('/show', 'UsersController@list');
+
+
+
+   //Routes for roles
+   Route::get('/role-adds','RoleController@create');
+   Route::post('/role-adds','RoleController@store');
+
+   Route::get('/role-index','RoleController@index');
+
+   Route::get('/role-edit/{id}','RoleController@edit');
+   Route::post('/role-edit/{id}','RoleController@update');
+
+   Route::get('/role-destroy/{id}','RoleController@destroy');
+
+   Route::get('/add','CommandeController@index');
+   Route::post('/store','CommandeController@store');
+   Route::get('/show','CommandeController@list');
+
