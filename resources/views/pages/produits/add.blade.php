@@ -18,6 +18,7 @@
                     <div class="form-group">
                         <label for="categorie">Catégorie</label>
                           <select name="categorie_id" class="form-control select2" >
+                              <option value="">Select a category!!</option>
                            @foreach($categories as $categorie)
                              <option value="{{ ($categorie->id) }}">{{ ($categorie->name) }}</option>
                            @endforeach
@@ -26,6 +27,7 @@
                     <div class="form-group">
                         <label for="categorie">Catégorie</label>
                          <select name="currency_id" class="form-control select2" >
+                             <option value="">Select a currency!!</option>
                           @foreach($currencies as $currency)
                              <option value="{{ ($currency->id) }}">{{ ($currency->name) }}</option>
                           @endforeach
