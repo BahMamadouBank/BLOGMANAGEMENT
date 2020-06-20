@@ -29,8 +29,8 @@
                 <form action="" method="post">
                     @csrf
                     <div class="form-group">
-                        <label for="telephone">Phone</label>
-                        <input type="text" name="phone" class="form-control">
+                        <label for="telephone">name</label>
+                        <input type="text" name="name" class="form-control">
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>

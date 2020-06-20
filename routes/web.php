@@ -64,6 +64,11 @@ Route::get('/', function () {
 
    Route::get('/logout', 'Auth\LoginController@getLogout')->name('logout');
 
+   Route::get('/create', 'UsersController@index');
+   Route::post('/save', 'UsersController@store');
+   Route::get('/show', 'UsersController@list');
+
+
 
    //Routes for roles
    Route::get('/role-adds','RoleController@create');
@@ -75,3 +80,8 @@ Route::get('/', function () {
    Route::post('/role-edit/{id}','RoleController@update');
 
    Route::get('/role-destroy/{id}','RoleController@destroy');
+
+   Route::get('/add','CommandeController@index');
+   Route::post('/store','CommandeController@store');
+   Route::get('/show','CommandeController@list');
+

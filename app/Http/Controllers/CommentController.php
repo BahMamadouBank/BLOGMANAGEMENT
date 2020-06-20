@@ -64,7 +64,7 @@ class CommentController extends Controller
  
         ]);
       
-        return back()->with('succes','Enregistré');
+        return back()->with('success','Enregistré');
 
     }
 

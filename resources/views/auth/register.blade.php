@@ -27,7 +27,15 @@
             <div class="col-md-12">
                 <h3>Inscription</h3>
             <form action="{{ url('register') }}" method="post">
-                @csrf
+                @csrf()
+                    <div class="form-group">
+                        <label for="telephone">name</label>
+                        <input type="text" name="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">email</label>
+                        <input type="text" name="email" class="form-control">
+                    </div>
                     <div class="form-group">
                         <label for="telephone">Phone</label>
                         <input type="text" name="phone" class="form-control">

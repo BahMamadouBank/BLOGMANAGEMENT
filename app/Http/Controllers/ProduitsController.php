@@ -40,11 +40,11 @@ class ProduitsController extends Controller
     public function create()
     {
 
+
         $categories=DB::table('categories')->get();
-
         $currencies=DB::table('currencies')->get();
-
         return view('pages.produits.add')->with('categories',$categories)->with('currencies',$currencies);
+
     }
 
     /**
@@ -89,12 +89,16 @@ class ProduitsController extends Controller
 
         DB::table('produits')->insert([
 
-             'designation'   =>$request->designation,
-             'currency_id'   =>$request->currency_id,
-             'prixAchat'     =>$request->prixAchat,
-             'prixVente'     =>$request->prixVente,
-             'categorie_id'  => $request->categorie_id,
-             'image'         => $fullName
+
+             'designation'=>$request->designation,
+             'currency_id'=>$request->currency_id,
+             'prixAchat'=>$request->prixAchat,
+             'prixVente'=>$request->prixVente,
+             'categorie_id' => $request->categorie_id,
+             'image'    => $fullName,
+
+            
+
         ]);
       
         return back()->with('succes','Enregistré');
